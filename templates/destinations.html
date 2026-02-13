@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Destinations - MJ Tours & Travels{% endblock %}
+
+{% block content %}
+<section class="hero" style="height: 400px; margin-top: 140px; background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('{{ url_for('static', filename='assets/destinations-hero.jpg') }}'); background-size: cover; background-position: center;">
+    <div class="hero-content">
+        <h1 class="hero-title">Explore Our Destinations</h1>
+        <p class="hero-subtitle">150+ incredible locations worldwide</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Popular Destinations</h2>
+        </div>
+        <div class="grid-3">
+            {% set destinations = [
+                ('Paris, France', 'From $1,299', 'dest-paris.jpg', 'Experience the romance of the City of Light with iconic landmarks, world-class museums, and charming café culture.'),
+                ('Bali, Indonesia', 'From $899', 'dest-bali.jpg', 'Discover paradise with pristine beaches, ancient temples, lush rice terraces, and vibrant Balinese traditions.'),
+                ('Maldives', 'From $2,499', 'dest-maldives.jpg', 'Indulge in ultimate luxury with overwater villas, crystal-clear turquoise waters, and world-class diving experiences.'),
+                ('Dubai, UAE', 'From $1,499', 'dest-dubai.jpg', 'Marvel at futuristic architecture, luxury shopping, desert safaris, and the perfect blend of tradition and modernity.'),
+                ('Tokyo, Japan', 'From $1,699', 'dest-tokyo.jpg', 'Immerse yourself in cutting-edge technology, ancient temples, incredible cuisine, and unique Japanese culture.'),
+                ('Santorini, Greece', 'From $1,399', 'dest-santorini.jpg', 'Fall in love with stunning sunsets, white-washed villages, blue-domed churches, and breathtaking Aegean Sea views.')
+            ] %}
+            {% for name, price, img, description in destinations %}
+            <div class="card animate-on-scroll">
+                <div class="card-image" style="background-image: url('{{ url_for('static', filename='assets/' ~ img) }}');"></div>
+                <div class="card-content">
+                    <h3 class="card-title">{{ name }}</h3>
+                    <p class="card-text">{{ description }}</p>
+                    <div class="card-footer">
+                        <div><div style="font-size: 1.5rem; font-weight: bold; color: var(--primary-green);">{{ price }}</div></div>
+                        <a href="{{ url_for('tours') }}" class="btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Explore</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

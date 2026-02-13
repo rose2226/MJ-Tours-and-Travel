@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+
+{% block title %}About Us - MJ Tours & Travels{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="hero" style="height: 400px; margin-top: 140px;">
+    <div class="slide active" style="background-image: url('{{ url_for('static', filename='assets/about-hero.jpg') }}');"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">About MJ Tours & Travels</h1>
+        <p class="hero-subtitle">Crafting extraordinary journeys since 2010</p>
+    </div>
+</section>
+
+<!-- Our Story -->
+<section class="section">
+    <div class="container">
+        <div class="grid-2" style="align-items: center; gap: 4rem;">
+            <div class="animate-on-scroll">
+                <h2>Our Story</h2>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    Founded in 2010 with a passion for exploration and a commitment to excellence, MJ Tours & Travels has grown from a small boutique travel agency into one of the most trusted names in global tourism. Our journey began with a simple belief: that travel should be transformative, enriching, and accessible to everyone.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    Over the years, we've helped more than 50,000 travelers discover the world's most captivating destinations. From romantic getaways to family adventures, from cultural immersions to luxury escapes, we've curated experiences that create lasting memories and inspire a deeper appreciation for our planet's diversity.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    Today, with a team of experienced travel consultants, partnerships with premium service providers worldwide, and an unwavering commitment to customer satisfaction, we continue to set the standard for exceptional travel experiences.
+                </p>
+            </div>
+            <div class="animate-on-scroll">
+                <div style="position: relative; height: 500px; border-radius: 15px; overflow: hidden; box-shadow: var(--shadow-xl);">
+                    <img src="{{ url_for('static', filename='assets/our-story.jpg') }}" alt="Our Story" style="width: 100%; height: 100%; object-fit: cover;">
+                    <!-- Placeholder: Add your story image here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Mission & Vision -->
+<section class="section section-dark">
+    <div class="container">
+        <div class="grid-2" style="gap: 3rem;">
+            <div class="card animate-on-scroll" style="background: var(--white); padding: 3rem;">
+                <div style="font-size: 3.5rem; color: var(--primary-green); margin-bottom: 1.5rem;">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h2 style="color: var(--primary-green); margin-bottom: 1.5rem;">Our Mission</h2>
+                <p style="font-size: 1.1rem; color: var(--warm-gray); line-height: 1.8;">
+                    To provide exceptional travel experiences that exceed expectations, inspire wonder, and create lasting memories. We are committed to personalized service, sustainable tourism practices, and making the world more accessible to every traveler.
+                </p>
+            </div>
+            
+            <div class="card animate-on-scroll" style="background: var(--white); padding: 3rem;">
+                <div style="font-size: 3.5rem; color: var(--primary-green); margin-bottom: 1.5rem;">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h2 style="color: var(--primary-green); margin-bottom: 1.5rem;">Our Vision</h2>
+                <p style="font-size: 1.1rem; color: var(--warm-gray); line-height: 1.8;">
+                    To be the world's most trusted and innovative travel company, recognized for transforming the way people explore the globe. We envision a future where every journey enriches lives, connects cultures, and contributes to a more understanding world.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Values -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Our Core Values</h2>
+            <p class="section-subtitle">The principles that guide everything we do</p>
+        </div>
+        
+        <div class="grid-4">
+            <div class="text-center animate-on-scroll">
+                <div style="width: 80px; height: 80px; background: var(--pale-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem; color: var(--primary-green);">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3 style="color: var(--primary-green); margin-bottom: 1rem;">Passion</h3>
+                <p>We love what we do and it shows in every detail of your journey.</p>
+            </div>
+            
+            <div class="text-center animate-on-scroll">
+                <div style="width: 80px; height: 80px; background: var(--pale-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem; color: var(--primary-green);">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3 style="color: var(--primary-green); margin-bottom: 1rem;">Excellence</h3>
+                <p>We strive for perfection in every aspect of our service.</p>
+            </div>
+            
+            <div class="text-center animate-on-scroll">
+                <div style="width: 80px; height: 80px; background: var(--pale-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem; color: var(--primary-green);">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3 style="color: var(--primary-green); margin-bottom: 1rem;">Integrity</h3>
+                <p>Honesty and transparency in all our dealings with clients and partners.</p>
+            </div>
+            
+            <div class="text-center animate-on-scroll">
+                <div style="width: 80px; height: 80px; background: var(--pale-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem; color: var(--primary-green);">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3 style="color: var(--primary-green); margin-bottom: 1rem;">Sustainability</h3>
+                <p>Committed to responsible tourism that preserves our planet.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Leadership Team -->
+<section class="section section-dark">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Meet Our Leadership</h2>
+            <p class="section-subtitle">The visionaries behind MJ Tours & Travels</p>
+        </div>
+        
+        <!-- CEO Section -->
+        <div class="card animate-on-scroll" style="background: var(--white); max-width: 900px; margin: 0 auto 4rem; overflow: visible;">
+            <div style="padding: 3rem;">
+                <div style="display: flex; gap: 3rem; align-items: center; flex-wrap: wrap;">
+                    <div style="flex: 0 0 250px;">
+                        <div style="width: 250px; height: 300px; border-radius: 15px; overflow: hidden; box-shadow: var(--shadow-lg); border: 5px solid var(--gold);">
+                            <!-- CEO PHOTO PLACEHOLDER -->
+                            <img src="{{ url_for('static', filename='assets/ceo-photo.jpg') }}" alt="CEO - MJ Tours & Travels" style="width: 100%; height: 100%; object-fit: cover;">
+                            <!-- INSTRUCTIONS: Replace 'assets/ceo-photo.jpg' with your actual CEO photo -->
+                        </div>
+                    </div>
+                    <div style="flex: 1; min-width: 300px;">
+                        <div style="display: inline-block; background: var(--pale-green); color: var(--primary-green); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem;">
+                            
+                        </div>
+                        <h2 style="color: var(--primary-green); margin-bottom: 0.5rem; font-size: 2rem;">MICHEAL JWHITE</h2>
+                        <p style="color: var(--gold); font-family: var(--font-elegant); font-size: 1.2rem; margin-bottom: 1.5rem;">Founder & CEO</p>
+                        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--warm-gray); margin-bottom: 1rem;">
+                            With over 20 years of experience in the travel and hospitality industry, MICHEAL JWHITE founded MJ Tours & Travels with a vision to revolutionize how people experience the world. Their passion for exploration and commitment to exceptional service has shaped the company's ethos and driven its growth.
+                        </p>
+                        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--warm-gray);">
+                            Under their leadership, MJ Tours has expanded to serve clients across the globe, earning recognition for innovation, sustainability, and customer satisfaction.
+                        </p>
+                        <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                            <a href="#" style="width: 40px; height: 40px; background: var(--primary-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); transition: var(--transition-normal);">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" style="width: 40px; height: 40px; background: var(--primary-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); transition: var(--transition-normal);">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Other Team Members -->
+        <div class="grid-3">
+            <div class="card animate-on-scroll" style="text-align: center;">
+                <div style="padding: 2rem;">
+                    <div style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; margin: 0 auto 1.5rem; border: 4px solid var(--gold);">
+                        <img src="{{ url_for('static', filename='assets/team-member-1.jpg') }}" alt="Team Member" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3 style="color: var(--primary-green); margin-bottom: 0.5rem;">Chloe Banks</h3>
+                    <p style="color: var(--gold); font-weight: 600; margin-bottom: 1rem;">Director of Operations</p>
+                    <p style="color: var(--warm-gray);">15+ years ensuring seamless travel experiences and operational excellence.</p>
+                </div>
+            </div>
+            
+            <div class="card animate-on-scroll" style="text-align: center;">
+                <div style="padding: 2rem;">
+                    <div style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; margin: 0 auto 1.5rem; border: 4px solid var(--gold);">
+                        <img src="{{ url_for('static', filename='assets/team-member-2.jpg') }}" alt="Team Member" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3 style="color: var(--primary-green); margin-bottom: 0.5rem;">Rose JWhites</h3>
+                    <p style="color: var(--gold); font-weight: 600; margin-bottom: 1rem;">Head of Customer Experience</p>
+                    <p style="color: var(--warm-gray);">Dedicated to creating unforgettable moments for every traveler.</p>
+                </div>
+            </div>
+            
+            <div class="card animate-on-scroll" style="text-align: center;">
+                <div style="padding: 2rem;">
+                    <div style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; margin: 0 auto 1.5rem; border: 4px solid var(--gold);">
+                        <img src="{{ url_for('static', filename='assets/team-member-3.jpg') }}" alt="Team Member" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3 style="color: var(--primary-green); margin-bottom: 0.5rem;">Junior White</h3>
+                    <p style="color: var(--gold); font-weight: 600; margin-bottom: 1rem;">Chief Marketing Officer</p>
+                    <p style="color: var(--warm-gray);">Connecting travelers with their dream destinations through innovative marketing.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Awards & Recognition -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Awards & Recognition</h2>
+            <p class="section-subtitle">Honored for excellence in travel services</p>
+        </div>
+        
+        <div class="grid-4">
+            <div class="text-center animate-on-scroll">
+                <div style="font-size: 4rem; color: var(--gold); margin-bottom: 1rem;">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h4 style="color: var(--primary-green); margin-bottom: 0.5rem;">Best Travel Agency</h4>
+                <p style="color: var(--warm-gray); font-size: 0.9rem;">Travel Excellence Awards 2025</p>
+            </div>
+            
+            <div class="text-center animate-on-scroll">
+                <div style="font-size: 4rem; color: var(--gold); margin-bottom: 1rem;">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <h4 style="color: var(--primary-green); margin-bottom: 0.5rem;">Customer Choice</h4>
+                <p style="color: var(--warm-gray); font-size: 0.9rem;">Global Tourism Awards 2024</p>
+            </div>
+            
+            <div class="text-center animate-on-scroll">
+                <div style="font-size: 4rem; color: var(--gold); margin-bottom: 1rem;">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h4 style="color: var(--primary-green); margin-bottom: 0.5rem;">Sustainable Tourism</h4>
+                <p style="color: var(--warm-gray); font-size: 0.9rem;">Green Travel Initiative 2025</p>
+            </div>
+            
+            <div class="text-center animate-on-scroll">
+                <div style="font-size: 4rem; color: var(--gold); margin-bottom: 1rem;">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h4 style="color: var(--primary-green); margin-bottom: 0.5rem;">5-Star Service</h4>
+                <p style="color: var(--warm-gray); font-size: 0.9rem;">Industry Excellence Rating</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="section" style="background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%); color: var(--white);">
+    <div class="container text-center">
+        <h2 style="color: var(--white); font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem;">
+            Join Us on Your Next Adventure
+        </h2>
+        <p style="font-size: 1.2rem; color: var(--cream); margin-bottom: 2rem;">
+            Experience the MJ Tours difference. Let's create your perfect journey together.
+        </p>
+        <a href="{{ url_for('contact') }}" class="btn-primary" style="padding: 1.2rem 3rem; font-size: 1.1rem;">Get in Touch</a>
+    </div>
+</section>
+{% endblock %}
