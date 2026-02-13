@@ -1,0 +1,316 @@
+{% extends "base.html" %}
+
+{% block title %}MJ Tours & Travels - Discover the World in Elegance{% endblock %}
+
+{% block content %}
+<!-- Hero Section with Slideshow -->
+<section class="hero">
+    <div class="slideshow">
+        <div class="slide active" style="background-image: url('{{ url_for('static', filename='assets/hero1.jpg') }}');">
+            <!-- Placeholder: Add your hero image here -->
+        </div>
+        <div class="slide" style="background-image: url('{{ url_for('static', filename='assets/hero2.jpg') }}');">
+            <!-- Placeholder: Add your hero image here -->
+        </div>
+        <div class="slide" style="background-image: url('{{ url_for('static', filename='assets/hero3.jpg') }}');">
+            <!-- Placeholder: Add your hero image here -->
+        </div>
+        <div class="slide" style="background-image: url('{{ url_for('static', filename='assets/hero4.jpg') }}');">
+            <!-- Placeholder: Add your hero image here -->
+        </div>
+        <div class="slide" style="background-image: url('{{ url_for('static', filename='assets/hero5.jpg') }}');">
+            <!-- Placeholder: Add your hero image here -->
+        </div>
+        <div class="slide" style="background-image: url('{{ url_for('static', filename='assets/hero6.jpg') }}');">
+            <!-- Placeholder: Add your hero image here -->
+        </div>
+        <div class="slide" style="background-image: url('{{ url_for('static', filename='assets/hero7.jpg') }}');">
+            <!-- Placeholder: Add your hero image here -->
+        </div>
+    </div>
+    
+    <div class="hero-content">
+        <h1 class="hero-title">Discover Your Next Adventure</h1>
+        <p class="hero-subtitle">Where luxury meets exploration</p>
+        <p class="hero-description">
+            Embark on extraordinary journeys crafted with precision and care. 
+            From pristine beaches to ancient wonders, we bring the world to you.
+        </p>
+        <div class="hero-buttons">
+            <a href="{{ url_for('tours') }}" class="btn-primary">Explore Tours</a>
+            <a href="{{ url_for('booking') }}" class="btn-secondary">Plan Your Trip</a>
+        </div>
+    </div>
+    
+    <div class="slideshow-controls">
+        <span class="slide-dot active"></span>
+        <span class="slide-dot"></span>
+        <span class="slide-dot"></span>
+        <span class="slide-dot"></span>
+        <span class="slide-dot"></span>
+        <span class="slide-dot"></span>
+        <span class="slide-dot"></span>
+    </div>
+    
+</section>
+
+<!-- Welcome Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Welcome to MJ Tours & Travels</h2>
+            <p class="section-subtitle">Creating Unforgettable Memories Since 2010</p>
+        </div>
+        
+        <div class="grid-2" style="align-items: center; gap: 4rem;">
+            <div class="animate-on-scroll">
+                <h3>Your Gateway to the World</h3>
+                <p>At MJ Tours & Travels, we believe that travel is more than just visiting new places—it's about creating lasting memories, discovering new cultures, and transforming perspectives. With over a decade of experience in curating exceptional travel experiences, we've helped thousands of travelers explore the world's most captivating destinations.</p>
+                <p>Our team of expert travel consultants works tirelessly to design personalized itineraries that cater to your unique preferences, ensuring every journey is seamless, enriching, and unforgettable.</p>
+                <div style="margin-top: 2rem;">
+                    <a href="{{ url_for('about') }}" class="btn-primary">Learn More About Us</a>
+                </div>
+            </div>
+            <div class="animate-on-scroll">
+                <div style="position: relative; height: 400px; border-radius: 15px; overflow: hidden; box-shadow: var(--shadow-xl);">
+                    <img src="{{ url_for('static', filename='assets/welcome.jpg') }}" alt="Welcome" style="width: 100%; height: 100%; object-fit: cover;">
+                    <!-- Placeholder: Add your welcome image here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Statistics Section -->
+<section class="section section-dark">
+    <div class="container">
+        <div class="grid-4">
+            <div class="text-center animate-on-scroll">
+                <div style="font-size: 3rem; color: var(--primary-green); font-weight: bold; margin-bottom: 0.5rem;">
+                    <span class="counter" data-target="15">0</span>+
+                </div>
+                <h3 style="color: var(--charcoal); font-size: 1.2rem;">Years Experience</h3>
+                <p>Serving travelers globally</p>
+            </div>
+            <div class="text-center animate-on-scroll">
+                <div style="font-size: 3rem; color: var(--primary-green); font-weight: bold; margin-bottom: 0.5rem;">
+                    <span class="counter" data-target="150">0</span>+
+                </div>
+                <h3 style="color: var(--charcoal); font-size: 1.2rem;">Destinations</h3>
+                <p>Across 6 continents</p>
+            </div>
+            <div class="text-center animate-on-scroll">
+                <div style="font-size: 3rem; color: var(--primary-green); font-weight: bold; margin-bottom: 0.5rem;">
+                    <span class="counter" data-target="50000">0</span>+
+                </div>
+                <h3 style="color: var(--charcoal); font-size: 1.2rem;">Happy Travelers</h3>
+                <p>And counting</p>
+            </div>
+            <div class="text-center animate-on-scroll">
+                <div style="font-size: 3rem; color: var(--primary-green); font-weight: bold; margin-bottom: 0.5rem;">
+                    <span class="counter" data-target="98">0</span>%
+                </div>
+                <h3 style="color: var(--charcoal); font-size: 1.2rem;">Satisfaction Rate</h3>
+                <p>Customer approved</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Destinations -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Featured Destinations</h2>
+            <p class="section-subtitle">Handpicked locations for your next adventure</p>
+        </div>
+        
+        <div class="grid-3">
+            <div class="card animate-on-scroll">
+                <div class="card-image" style="background-image: url('{{ url_for('static', filename='assets/dest-paris.jpg') }}');">
+                    <span class="card-badge">🔥 Trending</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Paris, France</h3>
+                    <p class="card-text">Experience the romance of the City of Light. From the Eiffel Tower to charming cafés along the Seine.</p>
+                    <div class="card-footer">
+                        <div>
+                            <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary-green);">From $1,299</div>
+                            <div style="font-size: 0.875rem; color: var(--warm-gray);">per person</div>
+                        </div>
+                        <a href="{{ url_for('tours') }}" class="btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Explore</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card animate-on-scroll">
+                <div class="card-image" style="background-image: url('{{ url_for('static', filename='assets/dest-bali.jpg') }}');">
+                    <span class="card-badge">⭐ Popular</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Bali, Indonesia</h3>
+                    <p class="card-text">Discover paradise with pristine beaches, ancient temples, and vibrant culture in the Island of Gods.</p>
+                    <div class="card-footer">
+                        <div>
+                            <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary-green);">From $899</div>
+                            <div style="font-size: 0.875rem; color: var(--warm-gray);">per person</div>
+                        </div>
+                        <a href="{{ url_for('tours') }}" class="btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Explore</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card animate-on-scroll">
+                <div class="card-image" style="background-image: url('{{ url_for('static', filename='assets/dest-maldives.jpg') }}');">
+                    <span class="card-badge">💎 Luxury</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Maldives</h3>
+                    <p class="card-text">Indulge in overwater villas, crystal-clear waters, and world-class luxury in this tropical paradise.</p>
+                    <div class="card-footer">
+                        <div>
+                            <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary-green);">From $2,499</div>
+                            <div style="font-size: 0.875rem; color: var(--warm-gray);">per person</div>
+                        </div>
+                        <a href="{{ url_for('tours') }}" class="btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="{{ url_for('destinations') }}" class="btn-secondary" style="padding: 1rem 3rem;">View All Destinations</a>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="section section-dark">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Why Choose MJ Tours & Travels</h2>
+            <p class="section-subtitle">Excellence in every journey</p>
+        </div>
+        
+        <div class="grid-4">
+            <div class="text-center animate-on-scroll">
+                <div style="font-size: 4rem; color: var(--primary-green); margin-bottom: 1rem;">
+                    <i class="fas fa-globe-americas"></i>
+                </div>
+                <h3 style="color: var(--charcoal);">Global Expertise</h3>
+                <p>15+ years of experience crafting perfect travel experiences across 150+ destinations worldwide.</p>
+            </div>
+            
+            <div class="text-center animate-on-scroll">
+                <div style="font-size: 4rem; color: var(--primary-green); margin-bottom: 1rem;">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3 style="color: var(--charcoal);">Expert Guides</h3>
+                <p>Professional, knowledgeable guides who bring destinations to life with local insights and stories.</p>
+            </div>
+            
+            <div class="text-center animate-on-scroll">
+                <div style="font-size: 4rem; color: var(--primary-green); margin-bottom: 1rem;">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 style="color: var(--charcoal);">Travel Protection</h3>
+                <p>Comprehensive insurance coverage and 24/7 support to ensure peace of mind throughout your journey.</p>
+            </div>
+            
+            <div class="text-center animate-on-scroll">
+                <div style="font-size: 4rem; color: var(--primary-green); margin-bottom: 1rem;">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3 style="color: var(--charcoal);">Best Value</h3>
+                <p>Competitive pricing without compromising quality. Best price guarantee on all our tour packages.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Preview -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">What Our Travelers Say</h2>
+            <p class="section-subtitle">Real experiences from real people</p>
+        </div>
+        
+        <div class="grid-3">
+            <div class="card animate-on-scroll" style="background: var(--pale-green);">
+                <div class="card-content">
+                    <div style="font-size: 3rem; color: var(--gold); margin-bottom: 1rem;">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="card-text" style="font-style: italic; font-size: 1.1rem;">
+                        "An absolutely incredible experience! MJ Tours made our honeymoon in Bali unforgettable. Every detail was perfect."
+                    </p>
+                    <div style="margin-top: 1.5rem; display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--primary-green);"></div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--charcoal);">Sarah & John Mitchell</div>
+                            <div style="font-size: 0.875rem; color: var(--warm-gray);">Bali Honeymoon Package</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card animate-on-scroll" style="background: var(--pale-green);">
+                <div class="card-content">
+                    <div style="font-size: 3rem; color: var(--gold); margin-bottom: 1rem;">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="card-text" style="font-style: italic; font-size: 1.1rem;">
+                        "Professional, reliable, and truly caring about their clients. Our family trip to Europe was seamless thanks to MJ Tours."
+                    </p>
+                    <div style="margin-top: 1.5rem; display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--primary-green);"></div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--charcoal);">David Thompson</div>
+                            <div style="font-size: 0.875rem; color: var(--warm-gray);">European Explorer Tour</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card animate-on-scroll" style="background: var(--pale-green);">
+                <div class="card-content">
+                    <div style="font-size: 3rem; color: var(--gold); margin-bottom: 1rem;">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="card-text" style="font-style: italic; font-size: 1.1rem;">
+                        "The attention to detail and personalized service exceeded all expectations. We'll definitely be booking again!"
+                    </p>
+                    <div style="margin-top: 1.5rem; display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--primary-green);"></div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--charcoal);">Maria Rodriguez</div>
+                            <div style="font-size: 0.875rem; color: var(--warm-gray);">Dubai Luxury Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="{{ url_for('testimonials') }}" class="btn-secondary" style="padding: 1rem 3rem;">Read More Reviews</a>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="section" style="background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%); color: var(--white);">
+    <div class="container text-center">
+        <h2 style="color: var(--white); font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem;">
+            Ready to Start Your Adventure?
+        </h2>
+        <p style="font-size: 1.2rem; color: var(--cream); margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+            Let us help you create the perfect journey. Our travel experts are ready to design an unforgettable experience tailored just for you.
+        </p>
+        <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+            <a href="{{ url_for('booking') }}" class="btn-primary" style="padding: 1.2rem 3rem; font-size: 1.1rem;">Book Your Trip</a>
+            <a href="{{ url_for('contact') }}" class="btn-secondary" style="padding: 1.2rem 3rem; font-size: 1.1rem; background: transparent; color: var(--white); border: 2px solid var(--white);">Contact Us</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MJ Tours & Travels - Your gateway to unforgettable global adventures. Premium tour packages, expert guides, and personalized travel experiences.">
+    <meta name="keywords" content="tours, travel, vacation, adventure, holiday packages, destinations">
+    <meta name="author" content="MJ Tours & Travels">
+    <title>{% block title %}MJ Tours & Travels - Discover the World{% endblock %}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_css %}{% endblock %}
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <!-- Top Bar -->
+        
+        
+        <!-- Main Navigation -->
+        <div class="main-header">
+            <nav class="nav-container">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="MJ Tours & Travels Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="logo-text">
+                        <h1>MJ Tours & Travels</h1>
+                        <p>Explore. Dream. Discover.</p>
+                    </div>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About Us</a></li>
+                    <li><a href="{{ url_for('destinations') }}">Destinations</a></li>
+                    <li><a href="{{ url_for('tours') }}">Tours</a></li>
+                    <li><a href="{{ url_for('itineraries') }}">Itineraries</a></li>
+                    <li><a href="{{ url_for('blog') }}">Blog</a></li>
+                    <li><a href="{{ url_for('testimonials') }}">Testimonials</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                    <li><a href="{{ url_for('booking') }}" class="cta-button">Book Now</a></li>
+                </ul>
+                
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash-message flash-{{ category }}">
+                        <i class="fas fa-{{ 'check-circle' if category == 'success' else 'exclamation-circle' }}"></i>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="MJ Tours & Travels Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div class="logo-text">
+                            <h1>MJ Tours & Travels</h1>
+                            <p>Explore. Dream. Discover.</p>
+                        </div>
+                    </div>
+                </div>
+                <p>Your trusted partner for unforgettable travel experiences around the globe. We create memories that last a lifetime.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="{{ url_for('about') }}">About Us</a></li>
+                    <li><a href="{{ url_for('destinations') }}">Destinations</a></li>
+                    <li><a href="{{ url_for('tours') }}">Tour Packages</a></li>
+                    <li><a href="{{ url_for('itineraries') }}">Itineraries</a></li>
+                    <li><a href="{{ url_for('blog') }}">Travel Blog</a></li>
+                    <li><a href="{{ url_for('testimonials') }}">Testimonials</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Popular Destinations</h3>
+                <ul>
+                    <li><a href="#">Paris, France</a></li>
+                    <li><a href="#">Bali, Indonesia</a></li>
+                    <li><a href="#">Dubai, UAE</a></li>
+                    <li><a href="#">Maldives</a></li>
+                    <li><a href="#">Tokyo, Japan</a></li>
+                    <li><a href="#">Santorini, Greece</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Dubai, UAE.</li>
+                    <li><i class="fas fa-phone"></i> +256 322 419 426</li>
+                    <li><i class="fas fa-phone"></i> +971 55 473 3894</li>
+                    <li><i class="fas fa-envelope"></i> mjtourstravels6@gmail.com</li>
+                    <li><i class="fas fa-clock"></i> Mon - Sat: 8AM - 6PM</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 MJ Tours & Travels. All rights reserved. | Designed with passion for travelers worldwide</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

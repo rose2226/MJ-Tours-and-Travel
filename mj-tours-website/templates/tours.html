@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %}Tour Packages - MJ Tours & Travels{% endblock %}
+{% block content %}
+<section class="hero" style="height: 400px; margin-top: 140px; background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('{{ url_for('static', filename='assets/booking-hero.jpg') }}'); background-size: cover; background-position: center;">
+    <div class="hero-content">
+        <h1 class="hero-title">Our Tour Packages</h1>
+        <p class="hero-subtitle">Curated experiences for every traveler</p>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="grid-3">
+            {% set tours = [
+                {
+                    'days': 7,
+                    'title': 'Bali Paradise Escape',
+                    'description': 'Explore ancient temples, pristine beaches, and lush rice terraces in the Island of Gods.',
+                    'price': 1099,
+                    'image': 'tour-1.jpg'
+                },
+                {
+                    'days': 10,
+                    'title': 'European Grand Tour',
+                    'description': 'Journey through Paris, Rome, and Barcelona with expert guides and luxury accommodations.',
+                    'price': 1199,
+                    'image': 'tour-2.jpg'
+                },
+                {
+                    'days': 5,
+                    'title': 'Maldives Luxury Retreat',
+                    'description': 'Unwind in overwater villas, snorkel in crystal waters, and enjoy world-class spa treatments.',
+                    'price': 1299,
+                    'image': 'tour-3.jpg'
+                },
+                {
+                    'days': 8,
+                    'title': 'Tokyo Cultural Discovery',
+                    'description': 'Immerse yourself in Japanese tradition, modern technology, and incredible cuisine.',
+                    'price': 1399,
+                    'image': 'tour-4.jpg'
+                },
+                {
+                    'days': 6,
+                    'title': 'Dubai Desert & City',
+                    'description': 'Experience futuristic skyscrapers, luxury shopping, desert safaris, and Arabian hospitality.',
+                    'price': 1499,
+                    'image': 'tour-5.jpg'
+                },
+                {
+                    'days': 12,
+                    'title': 'African Safari Adventure',
+                    'description': 'Witness the Big Five, stunning landscapes, and unforgettable wildlife encounters.',
+                    'price': 1599,
+                    'image': 'tour-6.jpg'
+                },
+                {
+                    'days': 9,
+                    'title': 'Greek Islands Odyssey',
+                    'description': 'Sail through Santorini, Mykonos, and Crete with breathtaking sunsets and ancient history.',
+                    'price': 1699,
+                    'image': 'tour-7.jpg'
+                },
+                {
+                    'days': 14,
+                    'title': 'South America Explorer',
+                    'description': 'Discover Machu Picchu, Amazon rainforest, and vibrant cities from Peru to Brazil.',
+                    'price': 1799,
+                    'image': 'tour-8.jpg'
+                },
+                {
+                    'days': 7,
+                    'title': 'Iceland Northern Lights',
+                    'description': 'Chase the Aurora Borealis, explore glaciers, hot springs, and dramatic volcanic landscapes.',
+                    'price': 1899,
+                    'image': 'tour-9.jpg'
+                }
+            ] %}
+            
+            {% for tour in tours %}
+            <div class="card animate-on-scroll">
+                <div class="card-image" style="background-image: url('{{ url_for('static', filename='assets/' ~ tour.image) }}');">
+                    <span class="card-badge">{{ tour.days }} Days</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">{{ tour.title }}</h3>
+                    <p class="card-text">{{ tour.description }}</p>
+                    <div class="card-footer">
+                        <div><div style="font-size: 1.5rem; font-weight: bold; color: var(--primary-green);">From ${{ tour.price }}</div></div>
+                        <a href="{{ url_for('booking') }}" class="btn-primary" style="padding: 0.6rem 1.5rem;">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
