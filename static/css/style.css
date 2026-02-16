@@ -223,15 +223,12 @@ img {
     border: 3px solid var(--white);
     padding: 0;
 }
-
 .logo-icon img {
-    width: 200%;
+    width: 250%;
     height: auto;
     object-fit: cover;
-    transform: translateX(-32%) translateY(5%);
+    transform: translateX(-38%) translateY(0%);
 }
-
-
 .logo-text h1 {
     font-size: 1.8rem;
     color: var(--white);
