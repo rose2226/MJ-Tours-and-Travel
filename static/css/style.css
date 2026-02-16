@@ -219,15 +219,18 @@ img {
     justify-content: center;
     overflow: hidden;
     background: var(--white);
-    padding: 8px;
+    box-shadow: var(--shadow-md);
+    border: 3px solid var(--white);
+    padding: 0;
 }
 
 .logo-icon img {
-    width: 140%;
+    width: 200%;
     height: auto;
     object-fit: cover;
-    transform: translateX(-15%);
+    transform: translateX(-32%) translateY(5%);
 }
+
 
 .logo-text h1 {
     font-size: 1.8rem;
