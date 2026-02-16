@@ -211,17 +211,18 @@ img {
 }
 
 .logo-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+    width: auto;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
-    border: 2px solid var(--white);
-    background: var(--white);
     padding: 5px;
+}
+
+.logo-icon img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
 }
 
 .logo-icon img {
