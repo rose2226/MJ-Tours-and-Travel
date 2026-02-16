@@ -224,11 +224,13 @@ img {
     padding: 0;
 }
 .logo-icon img {
-    width: 250%;
+    width: 320%;
     height: auto;
     object-fit: cover;
-    transform: translateX(-38%) translateY(0%);
+    object-position: center;
+    transform: translateX(-42%) translateY(-5%);
 }
+
 .logo-text h1 {
     font-size: 1.8rem;
     color: var(--white);
