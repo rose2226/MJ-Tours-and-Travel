@@ -52,6 +52,10 @@ def testimonials():
 def contact():
     return render_template('contact.html')
 
+@app.route('/videos')
+def contact():
+    return render_template('videos.html')
+
 @app.route('/booking')
 def booking():
     return render_template('booking.html')
