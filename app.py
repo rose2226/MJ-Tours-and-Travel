@@ -53,7 +53,7 @@ def contact():
     return render_template('contact.html')
 
 @app.route('/videos')
-def contact():
+def videos():
     return render_template('videos.html')
 
 @app.route('/booking')
