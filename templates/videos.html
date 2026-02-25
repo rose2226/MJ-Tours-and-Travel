@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Travel Videos - MJ Tours & Travels{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero" style="height: 400px; margin-top: 140px; background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('{{ url_for('static', filename='assets/videos-hero.jpg') }}'); background-size: cover; background-position: center;">
+    <div class="hero-content">
+        <h1 class="hero-title">Travel Videos</h1>
+        <p class="hero-subtitle">Watch our amazing tour experiences</p>
+    </div>
+</section>
+
+<!-- Videos Section -->
+<section class="section">
+    <div class="container">
+        <div class="videos-grid">
+            {% set videos = [
+                {'title': 'Bali Paradise Tour', 'video': 'bali.mp4'},
+                {'title': 'Paris City Experience', 'video': 'paris.mp4'},
+                {'title': 'Maldives Luxury', 'video': 'maldives.mp4'},
+                {'title': 'Dubai Adventure', 'video': 'dubai.mp4'},
+                {'title': 'Tokyo Journey', 'video': 'tokyo.mp4'},
+                {'title': 'African Safari', 'video': 'safari.mp4'}
+            ] %}
+            
+            {% for video in videos %}
+            <div class="video-card">
+                <h3>{{ video.title }}</h3>
+                <video controls>
+                    <source src="{{ url_for('static', filename='videos/' ~ video.video) }}" type="video/mp4">
+                    Your browser does not support video.
+                </video>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
