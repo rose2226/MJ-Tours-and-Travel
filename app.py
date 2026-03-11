@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for, flash, jso
 from datetime import datetime
 import json
 import os
+BOOKINGS_FILE = 'bookings.json'
+CONTACTS_FILE = 'contacts.json'
+FEEDBACK_FILE = 'feedback.json'
 
 app = Flask(__name__)
 app.secret_key = 'mj-tours-secret-key-2026'
@@ -107,6 +110,28 @@ def submit_contact():
     except Exception as e:
         flash('An error occurred. Please try again.', 'error')
         return redirect(url_for('contact'))
+
+@app.route('/submit_feedback', methods=['POST'])
+def submit_feedback():
+    try:
+        feedback_data = {
+            'id': datetime.now().strftime('%Y%m%d%H%M%S'),
+            'name': request.form.get('name') or 'Anonymous',
+            'email': request.form.get('email') or 'Not provided',
+            'rating': request.form.get('rating'),
+            'comment': request.form.get('comment'),
+            'timestamp': datetime.now().isoformat()
+        }
+        
+        feedback = load_data(FEEDBACK_FILE)
+        feedback.append(feedback_data)
+        save_data(FEEDBACK_FILE, feedback)
+        
+        flash('Thank you for your feedback! We appreciate it! ⭐', 'success')
+        return redirect(request.referrer or url_for('index'))
+    except Exception as e:
+        flash('An error occurred. Please try again.', 'error')
+        return redirect(request.referrer or url_for('index'))
 
 if __name__ == '__main__':
     # Use environment variable for port (Render provides this)
