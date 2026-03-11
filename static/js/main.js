@@ -393,3 +393,29 @@ window.MJTours = {
         }, 3000);
     }
 };
+
+// Feedback Modal Functions
+function openFeedbackModal() {
+    document.getElementById('feedbackModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeFeedbackModal() {
+    document.getElementById('feedbackModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('feedbackModal');
+    if (event.target == modal) {
+        closeFeedbackModal();
+    }
+}
+
+// Close with Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeFeedbackModal();
+    }
+});
