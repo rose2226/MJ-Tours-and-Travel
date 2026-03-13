@@ -324,4 +324,22 @@
         </div>
     </div>
 </section>
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const bookingForm = document.querySelector('form[action*="submit_booking"]');
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'booking_submission', {
+                    'event_category': 'Booking',
+                    'event_label': 'Booking Form Submitted'
+                });
+            }
+        });
+    }
+});
+</script>
+{% endblock %}
 {% endblock %}
