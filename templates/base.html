@@ -7,6 +7,16 @@
     <meta name="keywords" content="tours, travel, vacation, adventure, holiday packages, destinations">
     <meta name="author" content="MJ Tours & Travels">
     <title>{% block title %}MJ Tours & Travels - Discover the World{% endblock %}</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HMZHQKH4T3"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+
+  gtag('config', 'G-HMZHQKH4T3');
+  </script>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
