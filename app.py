@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify, session
 from datetime import datetime
 import json
 import os
@@ -136,6 +136,137 @@ def submit_feedback():
     except Exception as e:
         flash('An error occurred. Please try again.', 'error')
         return redirect(request.referrer or url_for('index'))
+
+# Admin Login
+@app.route('/admin/login', methods=['GET', 'POST'])
+def admin_login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        
+        if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
+            session['admin_logged_in'] = True
+            flash('Welcome to MJ Tours Admin Dashboard!', 'success')
+            return redirect(url_for('admin_dashboard'))
+        else:
+            flash('Invalid username or password', 'error')
+    
+    return render_template('admin_login.html')
+
+# Admin Logout
+@app.route('/admin/logout')
+def admin_logout():
+    session.pop('admin_logged_in', None)
+    flash('Logged out successfully', 'success')
+    return redirect(url_for('admin_login'))
+
+# Check if admin is logged in
+def admin_required(f):
+    from functools import wraps
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if not session.get('admin_logged_in'):
+            flash('Please login to access admin panel', 'error')
+            return redirect(url_for('admin_login'))
+        return f(*args, **kwargs)
+    return decorated_function
+
+# Admin Dashboard
+@app.route('/admin/dashboard')
+@admin_required
+def admin_dashboard():
+    # Load all data
+    bookings = load_data(BOOKINGS_FILE)
+    contacts = load_data(CONTACTS_FILE)
+    feedback = load_data(FEEDBACK_FILE)
+    
+    # Calculate statistics
+    total_bookings = len(bookings)
+    total_contacts = len(contacts)
+    total_feedback = len(feedback)
+    
+    # Calculate average rating
+    if feedback:
+        ratings = [int(f['rating']) for f in feedback if f.get('rating')]
+        avg_rating = round(sum(ratings) / len(ratings), 1) if ratings else 0
+    else:
+        avg_rating = 0
+    
+    # Get recent items (last 5)
+    recent_bookings = sorted(bookings, key=lambda x: x['timestamp'], reverse=True)[:5]
+    recent_contacts = sorted(contacts, key=lambda x: x['timestamp'], reverse=True)[:5]
+    recent_feedback = sorted(feedback, key=lambda x: x['timestamp'], reverse=True)[:5]
+    
+    return render_template('admin_dashboard.html',
+                         total_bookings=total_bookings,
+                         total_contacts=total_contacts,
+                         total_feedback=total_feedback,
+                         avg_rating=avg_rating,
+                         recent_bookings=recent_bookings,
+                         recent_contacts=recent_contacts,
+                         recent_feedback=recent_feedback)
+
+# View All Bookings
+@app.route('/admin/bookings')
+@admin_required
+def admin_bookings():
+    bookings = load_data(BOOKINGS_FILE)
+    bookings = sorted(bookings, key=lambda x: x['timestamp'], reverse=True)
+    return render_template('admin_bookings.html', bookings=bookings)
+
+# View All Contacts
+@app.route('/admin/contacts')
+@admin_required
+def admin_contacts():
+    contacts = load_data(CONTACTS_FILE)
+    contacts = sorted(contacts, key=lambda x: x['timestamp'], reverse=True)
+    return render_template('admin_contacts.html', contacts=contacts)
+
+# View All Feedback
+@app.route('/admin/feedback')
+@admin_required
+def admin_feedback():
+    feedback = load_data(FEEDBACK_FILE)
+    feedback = sorted(feedback, key=lambda x: x['timestamp'], reverse=True)
+    
+    # Calculate average rating
+    if feedback:
+        ratings = [int(f['rating']) for f in feedback if f.get('rating')]
+        avg_rating = round(sum(ratings) / len(ratings), 1) if ratings else 0
+    else:
+        avg_rating = 0
+    
+    return render_template('admin_feedback.html', feedback=feedback, avg_rating=avg_rating)
+
+# Delete Booking
+@app.route('/admin/delete_booking/<booking_id>', methods=['POST'])
+@admin_required
+def delete_booking(booking_id):
+    bookings = load_data(BOOKINGS_FILE)
+    bookings = [b for b in bookings if b['id'] != booking_id]
+    save_data(BOOKINGS_FILE, bookings)
+    flash('Booking deleted successfully', 'success')
+    return redirect(url_for('admin_bookings'))
+
+# Delete Contact
+@app.route('/admin/delete_contact/<contact_id>', methods=['POST'])
+@admin_required
+def delete_contact(contact_id):
+    contacts = load_data(CONTACTS_FILE)
+    contacts = [c for c in contacts if c['id'] != contact_id]
+    save_data(CONTACTS_FILE, contacts)
+    flash('Contact deleted successfully', 'success')
+    return redirect(url_for('admin_contacts'))
+
+# Delete Feedback
+@app.route('/admin/delete_feedback/<feedback_id>', methods=['POST'])
+@admin_required
+def delete_feedback(feedback_id):
+    feedback = load_data(FEEDBACK_FILE)
+    feedback = [f for f in feedback if f['id'] != feedback_id]
+    save_data(FEEDBACK_FILE, feedback)
+    flash('Feedback deleted successfully', 'success')
+    return redirect(url_for('admin_feedback'))
 
 if __name__ == '__main__':
     # Use environment variable for port (Render provides this)
