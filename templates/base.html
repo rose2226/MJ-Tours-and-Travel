@@ -169,8 +169,8 @@
             <span class="feedback-close" onclick="closeFeedbackModal()">&times;</span>
             <h2>How was your experience?</h2>
             <p>We'd love to hear your feedback!</p>
-            
-            <form id="feedbackForm" action="{{ url_for('submit_feedback') }}" method="POST">
+
+            <form id="feedbackForm" action="{{ url_for('submit_feedback') }}" method="POST" onsubmit="trackFeedback()">
                 <div class="feedback-stars">
                     <input type="radio" id="rate5" name="rating" value="5" required>
                     <label for="rate5">★</label>
@@ -211,6 +211,18 @@
     <!-- JavaScript -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     {% block extra_js %} {% endblock %}
+
+        <script>
+function trackFeedback() {
+    if (typeof gtag !== 'undefined') {
+        const rating = document.querySelector('input[name="rating"]:checked');
+        gtag('event', 'feedback_submission', {
+            'event_category': 'Feedback',
+            'event_label': 'Rating: ' + (rating ? rating.value : 'unknown') + ' stars'
+        });
+    }
+}
+</script>
    
 </body>
 </html>
