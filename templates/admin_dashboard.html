@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - MJ Tours</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: var(--light-gray);
+        }
+        
+        .admin-header {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .admin-header h1 {
+            color: var(--white);
+            font-size: 1.8rem;
+            margin: 0;
+        }
+        
+        .admin-nav {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .admin-nav a {
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: var(--transition-normal);
+        }
+        
+        .admin-nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .admin-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .stat-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+        
+        .stat-card i {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--warm-gray);
+            font-size: 1rem;
+        }
+        
+        .section-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 2rem;
+        }
+        
+        .section-card h2 {
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .view-all-btn {
+            background: var(--gold);
+            color: var(--forest-green);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: var(--transition-normal);
+        }
+        
+        .view-all-btn:hover {
+            background: var(--deep-gold);
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .data-table th {
+            background: var(--light-gray);
+            padding: 1rem;
+            text-align: left;
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+        
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .data-table tr:hover {
+            background: var(--pale-green);
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-header">
+        <h1><i class="fas fa-chart-line"></i> Admin Dashboard</h1>
+        <div class="admin-nav">
+            <a href="{{ url_for('index') }}" target="_blank"><i class="fas fa-globe"></i> View Website</a>
+            <a href="{{ url_for('admin_logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </div>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div style="max-width: 1400px; margin: 1rem auto; padding: 0 2rem;">
+                {% for category, message in messages %}
+                    <div style="padding: 1rem; margin-bottom: 1rem; border-radius: 8px; background: {% if category == 'error' %}#fee; color: #c00{% else %}#d4edda; color: #155724{% endif %};">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+    <div class="admin-container">
+        <!-- Statistics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-calendar-check"></i>
+                <div class="stat-number">{{ total_bookings }}</div>
+                <div class="stat-label">Total Bookings</div>
+            </div>
+            
+            <div class="stat-card">
+                <i class="fas fa-envelope"></i>
+                <div class="stat-number">{{ total_contacts }}</div>
+                <div class="stat-label">Contact Messages</div>
+            </div>
+            
+            <div class="stat-card">
+                <i class="fas fa-star"></i>
+                <div class="stat-number">{{ avg_rating }}</div>
+                <div class="stat-label">Average Rating</div>
+            </div>
+            
+            <div class="stat-card">
+                <i class="fas fa-comments"></i>
+                <div class="stat-number">{{ total_feedback }}</div>
+                <div class="stat-label">Total Feedback</div>
+            </div>
+        </div>
+        
+        <!-- Recent Bookings -->
+        <div class="section-card">
+            <h2>
+                Recent Bookings
+                <a href="{{ url_for('admin_bookings') }}" class="view-all-btn">View All</a>
+            </h2>
+            
+            {% if recent_bookings %}
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Destination</th>
+                        <th>Travel Date</th>
+                        <th>Travelers</th>
+                        <th>Contact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in recent_bookings %}
+                    <tr>
+                        <td><strong>{{ booking.name }}</strong></td>
+                        <td>{{ booking.destination }}</td>
+                        <td>{{ booking.travel_date }}</td>
+                        <td>{{ booking.travelers }}</td>
+                        <td>{{ booking.phone }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p style="text-align: center; color: var(--warm-gray); padding: 2rem;">No bookings yet</p>
+            {% endif %}
+        </div>
+        
+        <!-- Recent Contacts -->
+        <div class="section-card">
+            <h2>
+                Recent Messages
+                <a href="{{ url_for('admin_contacts') }}" class="view-all-btn">View All</a>
+            </h2>
+            
+            {% if recent_contacts %}
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Subject</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for contact in recent_contacts %}
+                    <tr>
+                        <td><strong>{{ contact.name }}</strong></td>
+                        <td>{{ contact.email }}</td>
+                        <td>{{ contact.subject }}</td>
+                        <td>{{ contact.message[:50] }}...</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p style="text-align: center; color: var(--warm-gray); padding: 2rem;">No messages yet</p>
+            {% endif %}
+        </div>
+        
+        <!-- Recent Feedback -->
+        <div class="section-card">
+            <h2>
+                Recent Feedback
+                <a href="{{ url_for('admin_feedback') }}" class="view-all-btn">View All</a>
+            </h2>
+            
+            {% if recent_feedback %}
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Rating</th>
+                        <th>Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for fb in recent_feedback %}
+                    <tr>
+                        <td><strong>{{ fb.name }}</strong></td>
+                        <td>
+                            {% for i in range(fb.rating|int) %}⭐{% endfor %}
+                        </td>
+                        <td>{{ fb.comment[:60] }}...</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p style="text-align: center; color: var(--warm-gray); padding: 2rem;">No feedback yet</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
