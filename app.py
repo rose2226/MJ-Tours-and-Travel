@@ -6,6 +6,10 @@ BOOKINGS_FILE = 'bookings.json'
 CONTACTS_FILE = 'contacts.json'
 FEEDBACK_FILE = 'feedback.json'
 
+# Admin credentials 
+ADMIN_USERNAME = 'admin'
+ADMIN_PASSWORD = 'mjtours@2026'  
+
 app = Flask(__name__)
 app.secret_key = 'mj-tours-secret-key-2026'
 
